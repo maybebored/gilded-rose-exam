@@ -1,0 +1,6 @@
+module GildedRoseConstants
+  MIN_SELL_IN=0
+  MIN_QUALITY=0
+  MAX_QUALITY=50
+  SULFURAS_QUALITY=80
+end
