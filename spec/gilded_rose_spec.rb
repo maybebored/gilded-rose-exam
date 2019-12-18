@@ -158,5 +158,21 @@ describe GildedRose do
         expect(items[0].quality).to eq(9)
       end
     end
+
+    context "when item name is 'Conjured'" do
+      let(:name) { 'Conjured' }
+
+      it "decreases quality twice as fast" do
+        expect(item.quality).to eq 8 # from 10 it goes to 8
+      end
+
+      context "and when quality is 0" do
+        let(:initial_quality) { 0 }
+
+        it "cannot go below 0" do
+          expect(item.quality).to be <= 0
+        end
+      end
+    end
   end
 end
