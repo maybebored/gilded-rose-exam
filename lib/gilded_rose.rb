@@ -1,3 +1,5 @@
+require_relative './gilded_rose_constants'
+
 class GildedRose
   def initialize(items)
     @items = items
@@ -6,12 +8,14 @@ class GildedRose
   def update_quality
     @items.each do |item|
       case item.name
-      when 'Aged Brie'
+      when GildedRoseConstants::ITEM_AGED_BRIE
         item = update_aged_brie(item)
-      when 'Sulfuras, Hand of Ragnaros'
+      when GildedRoseConstants::ITEM_SULFURAS
         item = item
-      when 'Backstage passes to a TAFKAL80ETC concert'
+      when GildedRoseConstants::ITEM_BACKSTAGE_PASSES
         item = update_backstage_passes(item)
+      when GildedRoseConstants::ITEM_CONJURED
+        item = update_conjured(item)
       else
         item = update_normal(item)
       end
