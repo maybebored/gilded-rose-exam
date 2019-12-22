@@ -166,11 +166,19 @@ describe GildedRose do
         expect(item.quality).to eq 8 # from 10 it goes to 8
       end
 
+      context "and when sell_in is expired" do
+        let(:initial_sell_in) { -1 }
+
+        it "decreases quality twice the normal rate" do
+          expect(item.quality).to eq 6
+        end
+      end
+
       context "and when quality is 0" do
         let(:initial_quality) { 0 }
 
         it "cannot go below 0" do
-          expect(item.quality).to be <= 0
+          expect(item.quality).to eq 0
         end
       end
     end

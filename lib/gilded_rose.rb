@@ -57,9 +57,13 @@ class GildedRose
   end
 
   def update_conjured(item)
-    item.quality = change_quality(item.quality, 2, false)
-    item.sell_in = item.sell_in - 1
+    if item.sell_in <= GildedRoseConstants::MIN_SELL_IN
+      item.quality = change_quality(item.quality, 4, false)
+    else
+      item.quality = change_quality(item.quality, 2, false)
+    end
 
+    item.sell_in = item.sell_in - 1
     return item
   end
 
